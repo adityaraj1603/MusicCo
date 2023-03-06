@@ -1,0 +1,11 @@
+{
+  "name": "musicco_backend",
+  "version": "1.0.0",
+  "description": "This will contain the backend code for the musicco app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aditya raj srivastava",
+  "license": "ISC"
+}
