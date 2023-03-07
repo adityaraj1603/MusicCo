@@ -8,7 +8,7 @@ const User=new mongoose.Schema({
     lastName:{
         type:String,
         required:false,
-    }
+    },
     email:{
         type:String,
         required: true,
@@ -16,7 +16,7 @@ const User=new mongoose.Schema({
     username:{
         type:String,
         required:true,
-    }
+    },
     likedSongs:{
         type:String,
         default:"",
