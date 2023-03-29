@@ -2,30 +2,30 @@ const mongoose=require("mongoose");
 
 const Playlist=new mongoose.Schema({
     name:{
-     type:String,
+     type: String,
      required:true,  
     },
     thumbnail:{
         type:String,
         required:true,
     },
-    track:{
-        type:String,
+    owner:{
+        type:mongoose.Types.ObjectId,
+        ref:"user",
+    },
+    songs:[
+        {   
+        type: mongoose.Types.ObjectId,
+        ref:"song",
+        },
+    ],
+    collaborators:[
+        {
+        type:mongoose.Types.ObjectId,
         required: true,
     },
-    songs:{
-        type:String,
-       ref:songs
- 
-     },
-    artist:{
-        type : mongoose.Types.ObjectId,
-        ref:"User",
-    },
-
-
-
+    ],
 });
 
-const PlaylistMode= mongoose.model("'Playlist",Playlist);
+const PlaylistMode= mongoose.model("Playlist",Playlist);
 module.exports=PlaylistMode;

@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 
 const Song=new mongoose.Schema({
-    name:{
+    name: {
      type:String,
      required:true,  
     },
@@ -10,12 +10,12 @@ const Song=new mongoose.Schema({
         required:true,
     },
     track:{
-        type:String,
+        type: String,
         required: true,
     },
     artist:{
         type : mongoose.Types.ObjectId,
-        ref:"User",
+        ref:"user",
     },
 });
 
