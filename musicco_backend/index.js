@@ -33,8 +33,8 @@ mongoose.connect("mongodb+srv://adityaraj16:"+ process.env.MONGO_PASSWORD +"@clu
 
 
  /////// setup passport jwt
-let opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+let opts ={};
+ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_KEY;
 passport.use(
     new JwtStrategy(opts, function(jwt_payload, done) {
