@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import { Icon } from "@iconify/react";
 import TextInput from "../components/shared/TextInput";
 import PasswordInput from "../components/shared/PasswordInput";
@@ -13,7 +13,7 @@ const SignupComponent = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  // const [cookie, setCookie] = useCookies(["token"]);
+  const [cookie, setCookie] = useCookies(["token"]);
   const navigate = useNavigate();
 
   const signUp = async () => {
@@ -22,15 +22,17 @@ const SignupComponent = () => {
       return;
     }
     const data = { email, password, username, firstName, lastName };
+    // console.log(data);
     const response = await makeUnauthenticatedPOSTRequest(
       "/auth/register",
       data
     );
     if (response && !response.err) {
-      // const token = response.token;
-      // const date = new Date();
-      // date.setDate(date.getDate() + 30);
-      // setCookie("token", token, { path: "/", expires: date });
+      // console.log(response);
+      const token = response.token;
+      const date = new Date();
+      date.setDate(date.getDate() + 30);
+      setCookie("token", token, { path: "/", expires: date });
       alert("Success");
       navigate("/home");
     } else {
