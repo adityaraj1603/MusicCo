@@ -1,11 +1,13 @@
-const jwt=require("jsonwebtoken");
-// require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
-exports={};
-exports.getToken= async(email,user)=>{
-    const token=jwt.sign( {identifier:user._id},process.env.JWT_KEY
-    );
-    return token;
+exports = {};
 
+exports.getToken = async (email, user) => {
+  const token = jwt.sign(
+    { identifier: user._id },
+    "thisKeyIsSupposedToBeSecret"
+  );
+  return token;
 };
-module.exports=exports;
+
+module.exports = exports;
