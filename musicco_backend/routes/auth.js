@@ -1,4 +1,5 @@
 const express = require("express");
+const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
@@ -57,4 +58,26 @@ router.post("/login", async (req, res) => {
   return res.status(200).json(userToReturn);
 });
 
+// router.get("/logout", (req, res) => {
+//   res.clearCookie("token", { path: "/login" });
+//   res.status(200).send("user logout");
+// });
+router.get(
+  "/logout",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    console.log(res);
+    res.clearCookie("token", { path: "/login" });
+    return res;
+  }
+);
+// router.get(
+//   "/logout",
+//   passport.authenticate("jwt", { session: false }),
+//   async (req, res) => {
+//     res.clearCookie("token", { path: "/login" });
+//     res.status(200).send("user logout");
+//     // return res.status(200).json({ data: songs });
+//   }
+// );
 module.exports = router;
