@@ -97,17 +97,9 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
   //   );
   //   setSongData(response.data);
   // };
-  const logout = async () => {
-    console.log("123");
-    // const response = await makeAuthenticatedGETRequest("/auth/logout");
-    // console.log(response);
-    console.log(cookies);
-    removeCookie("token");
-    navigate("/login");
-    // } else {
-    //   alert("Failure");
-    // }
-  };
+ ////////logout
+
+  
   return (
     <div className="h-full w-full bg-app-black">
       {createPlaylistModalOpen && (
