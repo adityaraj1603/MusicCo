@@ -131,6 +131,9 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
     //   alert("Failure");
     // }
   };
+
+  ////////logout
+
   return (
     <div className="h-full w-full bg-app-black">
       {createPlaylistModalOpen && (
