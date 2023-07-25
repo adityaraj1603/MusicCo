@@ -9,6 +9,10 @@ const Playlist = new mongoose.Schema({
     type: String,
     required: true,
   },
+  getall: {
+    type: String,
+    default: "",
+  },
   owner: {
     type: mongoose.Types.ObjectId,
     ref: "User",

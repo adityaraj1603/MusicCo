@@ -9,6 +9,10 @@ const Song = new mongoose.Schema({
     type: String,
     required: true,
   },
+  getall: {
+    type: String,
+    default: "",
+  },
   track: {
     type: String,
     required: true,

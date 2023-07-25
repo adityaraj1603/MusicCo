@@ -71,6 +71,24 @@ router.get(
     return res;
   }
 );
+
+// router.post(
+//   "/add/liked",
+//   passport.authenticate("jwt", { session: false }),
+//   async (req, res) => {
+//     const currentUser = req.user;
+//     const { songId } = req.body;
+//     const song = await Song.findOne({ _id: songId });
+//     if (!song) {
+//       return res.status(304).json({ err: "Song does not exist" });
+//     }
+
+//     currentUser.Likedsongs.push(songId);
+//     await currentUser.save();
+
+//     return res.status(200).json(currentUser);
+//   }
+// );
 // router.get(
 //   "/logout",
 //   passport.authenticate("jwt", { session: false }),

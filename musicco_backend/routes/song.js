@@ -32,6 +32,15 @@ router.get(
 );
 
 router.get(
+  "/get/songs",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const songs = await Song.find({ getall: "" });
+    return res.status(200).json({ data: songs });
+  }
+);
+
+router.get(
   "/get/artist/:artistId",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
@@ -44,16 +53,72 @@ router.get(
     return res.status(200).json({ data: songs });
   }
 );
+
 router.get(
   "/get/songname/:songName",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     console.log(123);
     const { songName } = req.params;
-
-    const songs = await Song.find({ name: songName }).populate("artist");
+    const songs = await Song.find({ name: songName });
     return res.status(200).json({ data: songs });
   }
 );
 
+router.post(
+  "/add/liked",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    // console.log("a2");
+    const currentUser = req.user;
+    const { songId } = req.body;
+    const song = await Song.findOne({ _id: songId });
+    const findd = await currentUser.Likedsongs.find(
+      (element) => element == songId
+    );
+    console.log(currentUser);
+    console.log(findd);
+    if (findd) {
+      return 1;
+    }
+
+    if (!song) {
+      return res.status(304).json({ err: "Song does not exist" });
+    }
+    console.log("a");
+
+    currentUser.Likedsongs.push(song);
+    await currentUser.save();
+
+    return res.status(200).json(currentUser);
+  }
+);
+
+router.get(
+  "/get/liked",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const currentUser = req.user;
+    const user = await User.findOne({ _id: currentUser._id }).populate(
+      "Likedsongs"
+    );
+    return res.status(200).json({ user });
+  }
+);
+
+router.get(
+  "/get/playlist/:playlistId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const playlistId = req.params.playlistId;
+    // I need to find a playlist with the _id = playlistId
+    const playlist = await Playlist.findOne({ _id: playlistId }).populate(
+      "songs"
+    );
+    if (!playlist) {
+      return res.status(301).json({ err: "Invalid ID" });
+    }
+    return res.status(200).json(playlist);
+  }
+);
 module.exports = router;

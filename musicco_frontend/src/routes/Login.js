@@ -65,7 +65,7 @@ const LoginComponent = () => {
         <div className="w-full border border-solid border-gray-300"></div>
         <div className="my-6 font-semibold text-lg">Don't have an account?</div>
         <div className="border border-gray-500 text-gray-500 w-full flex items-center justify-center py-4 rounded-full font-bold">
-          <Link to="/signup">SIGN UP FOR SPOTIFY</Link>
+          <Link to="/signup">SIGN UP FOR MUSICCO</Link>
         </div>
       </div>
     </div>

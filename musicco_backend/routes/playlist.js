@@ -55,7 +55,14 @@ router.get(
     return res.status(200).json({ data: playlists });
   }
 );
-
+router.get(
+  "/get/musicco_playlists",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const playlists = await Playlist.find({ getall: "" });
+    return res.status(200).json({ data: playlists });
+  }
+);
 // Get all playlists made by an artist
 // /get/artist/xyz
 router.get(
@@ -82,7 +89,7 @@ router.post(
   async (req, res) => {
     const currentUser = req.user;
     const { playlistId, songId } = req.body;
-    // Step 0: Get the playlist if valid
+
     const playlist = await Playlist.findOne({ _id: playlistId });
     if (!playlist) {
       return res.status(304).json({ err: "Playlist does not exist" });

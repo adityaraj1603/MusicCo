@@ -41,6 +41,19 @@ export const makeAuthenticatedGETRequest = async (route) => {
   return formattedResponse;
 };
 
+// export const makeUnauthenticatedGETRequest = async (route) => {
+//   const response = await fetch(backendUrl + route, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(body),
+//   });
+//   const formattedResponse = await response.json();
+
+//   return formattedResponse;
+// };
+
 const getToken = () => {
   const accessToken = document.cookie.replace(
     /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,

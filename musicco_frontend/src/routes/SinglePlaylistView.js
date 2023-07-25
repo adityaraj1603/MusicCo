@@ -13,14 +13,17 @@ const SinglePlaylistView = () => {
       const response = await makeAuthenticatedGETRequest(
         "/playlist/get/playlist/" + playlistId
       );
+      // console.log(response);
       setPlaylistDetails(response);
       console.log(response);
+      console.log(playlistDetails);
     };
     getData();
   }, []);
 
   return (
     <LoggedInContainer curActiveScreen={"library"}>
+      {/* console.log(playlistDetails._id); */}
       {playlistDetails._id && (
         <div>
           <div className="text-white text-xl pt-8 font-semibold">

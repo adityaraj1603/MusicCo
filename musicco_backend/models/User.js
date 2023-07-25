@@ -22,10 +22,6 @@ const User = new mongoose.Schema({
     type: String,
     required: true,
   },
-  likedSongs: {
-    type: String,
-    default: "",
-  },
   likedPlaylist: {
     type: String,
     default: "",
@@ -34,6 +30,12 @@ const User = new mongoose.Schema({
     type: String,
     default: "",
   },
+  Likedsongs: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Song",
+    },
+  ],
 });
 
 const UserModel = mongoose.model("User", User);
