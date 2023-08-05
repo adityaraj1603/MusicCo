@@ -121,4 +121,33 @@ router.get(
     return res.status(200).json(playlist);
   }
 );
+
+router.delete(
+  "/deletesong",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    // const currentUser = req.user;
+    // const { artistId } = req.params;
+    // const artist = await User.findOne({ _id: artistId });
+    // if (!artist) {
+    //   return res.status(301).json({ err: "Artist does not exist" });
+    // }
+    const { songId } = req.body;
+    const song = await Song.findOne({ _id: songId });
+
+    console.log(song);
+    // const findd = await song.artists.find(
+    //   (element) => element == songId
+    // );
+    // if (findd) {
+    //   return 1;
+    // }
+    await song.remove();
+
+    res.status(200).json({
+      success: true,
+      message: "Song Delete Successfully",
+    });
+  }
+);
 module.exports = router;

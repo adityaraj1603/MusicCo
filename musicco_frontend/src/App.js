@@ -7,6 +7,7 @@ import HomeComponent from "./routes/Home";
 import LoggedInHomeComponent from "./routes/LoggedInHome";
 import LikedComponent from "./routes/Liked";
 import UploadSong from "./routes/UploadSong";
+import UpdateProfile from "./routes/Profile";
 import Logout from "./routes/Logout";
 import MyMusic from "./routes/MyMusic";
 import SearchPage from "./routes/SearchPage";
@@ -47,7 +48,8 @@ function App() {
               <Route path="/search" element={<SearchPage />} />
               <Route path="/library" element={<Library />} />
               <Route path="/liked" element={<LikedComponent />} />
-              {/* <Route path="/logout" element={<LoggedInContainer/>} /> */}
+              <Route path="/profile" element={<UpdateProfile />} />
+              {/* <Route path="/logout" element={<LoggedInContainer/>} /> */}  
               <Route
                 path="/playlist/:playlistId"
                 element={<SinglePlaylistView />}

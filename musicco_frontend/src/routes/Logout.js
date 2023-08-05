@@ -1,72 +1,34 @@
-import { useState } from "react";
-import { Icon } from "@iconify/react";
-import TextInput from "../components/shared/TextInput";
-import PasswordInput from "../components/shared/PasswordInput";
-import { Link, useNavigate } from "react-router-dom";
-import { makeUnauthenticatedPOSTRequest } from "../utils/serverHelpers";
-import { useCookies } from "react-cookie";
+// {/* <div className="navbar w-full h-1/10 bg-black bg-opacity-30 flex items-center justify-end">
+// <div className="w-3/5 flex h-full">
+//   <div className="w-1/2 flex justify-around items-center ">
+//     <TextWithHover displayText={" Premium "} />
+//     <TextWithHover displayText={" Support "} />
+//     <TextWithHover displayText={" Download "} />
+//     <div className="h-1/2 border-r border-white"></div>
+//   </div>
+//   <div className="w-1/2 flex justify-around h-full items-center">
+//     <IconText
+//       // iconName={"material-symbols:home"}
+//       displayText={"Upload Song"}
+//       targetLink={"/uploadSong"}
+//       // active={curActiveScreen === "home"}
+//     />
 
-const LoginComponent = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [cookies, setCookie] = useCookies(["token"]);
-  const navigate = useNavigate();
-
-  const login = async () => {
-    const data = { email, password };
-    const response = await makeUnauthenticatedPOSTRequest("/auth/login", data);
-    if (response && !response.err) {
-      const token = response.token;
-      const date = new Date();
-      date.setDate(date.getDate() + 30);
-      setCookie("token", token, { path: "/", expires: date });
-      alert("Success");
-      navigate("/home");
-    } else {
-      alert("Failure");
-    }
-  };
-
-  return (
-    <div className="w-full h-full flex flex-col items-center">
-      <div className="logo p-5 border-b border-solid border-gray-300 w-full flex justify-center">
-        <Icon icon="logos:spotify" width="150" />
-      </div>
-      <div className="inputRegion w-1/3 py-10 flex items-center justify-center flex-col">
-        {/*  I will have my 2 inputs(email and password) and I will have my sign up instead button*/}
-        <div className="font-bold mb-4">To continue, log in to Spotify.</div>
-        <TextInput
-          label="Email address or username"
-          placeholder="Email address or username"
-          className="my-6"
-          value={email}
-          setValue={setEmail}
-        />
-        <PasswordInput
-          label="Password"
-          placeholder="Password"
-          value={password}
-          setValue={setPassword}
-        />
-        <div className=" w-full flex items-center justify-end my-8">
-          <button
-            className="bg-green-400 font-semibold p-3 px-10 rounded-full"
-            onClick={(e) => {
-              e.preventDefault();
-              login();
-            }}
-          >
-            LOG IN
-          </button>
-        </div>
-        <div className="w-full border border-solid border-gray-300"></div>
-        <div className="my-6 font-semibold text-lg">Don't have an account?</div>
-        <div className="border border-gray-500 text-gray-500 w-full flex items-center justify-center py-4 rounded-full font-bold">
-          <Link to="/signup">SIGN UP FOR SPOTIFY</Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default LoginComponent;
+//     {/* <div className=" w-full flex items-center justify-end my-8"></div> */}
+//     <div className="bg-white w-10 h-7 flex items-center justify-center  font-semibold cursor-pointer xs:text:5 sm:text-xs md:text-sm lg:text-md">
+//       <button
+//         className="bg-red-400 font-semibold p-1/2 px-4 rounded-full xs:text-xs sm:text-xs md:text-sm lg:text-md"
+//         onClick={(e) => {
+//           e.preventDefault();
+//           logout();
+//         }}
+//       >
+//         LOG OUT
+//       </button>
+//     </div>
+//     <div className="bg-white w-10 h-10 flex items-center justify-center rounded-full font-semibold cursor-pointer">
+//       AC
+//     </div>
+//   </div>
+// </div>
+// </div> */}

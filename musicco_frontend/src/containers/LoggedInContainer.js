@@ -161,7 +161,7 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
       )} */}
       <div className={`${currentSong ? "h-9/10" : "h-full"} w-full flex`}>
         {/* This first div will be the left panel */}
-        <div className="h-full w-1/5 bg-black flex flex-col justify-between pb-10 xs:text-xs sm:text-xs md:text-sm lg:text-lg">
+        <div className="h-full w-3/10 sm:w-1/5 bg-black flex flex-col justify-between pb-10 text-xs sm:text-base md:text-lg">
           <div>
             {/* This div is for logo */}
             <div className="logoDiv p-6 text-white-700 ">
@@ -216,7 +216,7 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
           </div>
           <div className="px-5">
             lg
-            <div className="border border-gray-100 text-white w-2/5 flex px-2 py-1 rounded-full items-center justify-center hover:border-white cursor-pointer sm:text-sm md:text-md lg:text-lg">
+            <div className="border border-gray-100 text-white w-2/5 flex px-2 py-1 rounded-full items-center justify-center hover:border-white cursor-pointer text-xs sm:text-base md:text-lg">
               <Icon icon="carbon:earth-europe-africa" />
               <div className="ml-2 text-sm font-semibold">English</div>
             </div>
@@ -224,40 +224,182 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
         </div>
         {/* This second div will be the right part(main content) */}
         <div className="h-full w-4/5 bg-app-black overflow-auto xs:text-xs sm:text-xs md:text-sm lg:text-md">
-          <div className="navbar w-full h-1/10 bg-black bg-opacity-30 flex items-center justify-end">
-            <div className="w-3/5 flex h-full">
-              <div className="w-1/2 flex justify-around items-center ">
-                <TextWithHover displayText={" Premium "} />
-                <TextWithHover displayText={" Support "} />
-                <TextWithHover displayText={" Download "} />
-                <div className="h-1/2 border-r border-white"></div>
-              </div>
-              <div className="w-1/2 flex justify-around h-full items-center">
-                <IconText
-                  // iconName={"material-symbols:home"}
-                  displayText={"Upload Song"}
-                  targetLink={"/uploadSong"}
-                  // active={curActiveScreen === "home"}
-                />
+          {/* paste here */}
+          <div className="navbar w-full h-2/10 md:h-1/10 lg:1/10  bg-black flex items-center justify-end text-xs sm:text-base md:text-lg">
+            {/* <section class="relative mx-auto"> */}
+            <nav class=" bg-black bg-opacity-30  flex items-center justify-end text-white w-screen">
+              <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+                {/* <a class="text-3xl font-bold font-heading" href="#">
+                  <!-- <img class="h-9" src="logo.png" alt="logo"> -->
+                </a> */}
 
-                {/* <div className=" w-full flex items-center justify-end my-8"></div> */}
-                <div className="bg-white w-10 h-7 flex items-center justify-center  font-semibold cursor-pointer xs:text:5 sm:text-xs md:text-sm lg:text-md">
-                  <button
-                    className="bg-red-400 font-semibold p-1/2 px-4 rounded-full xs:text-xs sm:text-xs md:text-sm lg:text-md"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      logout();
-                    }}
+                <ul class="sm:flex md:flex px-4  space-y-5  mx-auto font-semibold font-heading space-x-12">
+                  <li></li>
+                  <li>
+                    <a class="hover:text-gray-200" href="#">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a class="hover:text-gray-200" href="#">
+                      Catagory
+                    </a>
+                  </li>
+                  <li>
+                    <a class="hover:text-gray-200" href="#">
+                      Collections
+                    </a>
+                  </li>
+                  <li></li>
+                  <li>
+                    <a class="hover:text-gray-200" href="/uploadsong">
+                      Upload Song
+                    </a>
+                  </li>
+                </ul>
+
+                <div class="xl:flex items-center space-x-5 space-y-10 sm:space-y-0 md:space-y-0 lg:space-y-0">
+                  <a class="hover:text-gray-200" href="#">
+                    <button
+                      className="bg-red-400 font-semibold p-1/2 px-4 rounded-full "
+                      onClick={(e) => {
+                        e.preventDefault();
+                        logout();
+                      }}
+                    >
+                      LOG OUT
+                    </button>
+                  </a>
+
+                  {/* <button
+                  
+                      <div
+                        class=" hidden:false bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"
+                        id="dropdown"
+                      >
+                        <div class="px-4 py-3">
+                          <span class="block text-sm">Bonnie Green</span>
+                          <span class="block text-sm font-medium text-gray-900 truncate">
+                            name@flowbite.com
+                          </span>
+                        </div>
+                        <ul class="py-1" aria-labelledby="dropdown">
+                          <li>
+                            <a
+                              href="#"
+                              class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                            >
+                              Dashboard
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                            >
+                              Settings
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                            >
+                              Earnings
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                            >
+                              Sign out
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script> */}
+
+                  <a
+                    class="flex items-center hover:text-gray-200"
+                    href="/profile"
                   >
-                    LOG OUT
-                  </button>
-                </div>
-                <div className="bg-white w-10 h-10 flex items-center justify-center rounded-full font-semibold cursor-pointer">
-                  AC
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 hover:text-gray-200"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </a>
                 </div>
               </div>
-            </div>
+
+              {/* <a class="xl:hidden flex mr-6 items-center" href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 hover:text-gray-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  <span class="flex absolute -mt-5 ml-4">
+                    <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                  </span>
+                </a> */}
+              {/* <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 hover:text-gray-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </a> */}
+            </nav>
+            {/* </section> */}
           </div>
+
+          {/* <div class="absolute bottom-0 right-0 mb-4 mr-4 z-10">
+            <div>
+              <a
+                title="Follow me on twitter"
+                href="https://www.twitter.com/asad_codes"
+                target="_blank"
+                class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
+              >
+                <img
+                  class="object-cover object-center w-full h-full rounded-full"
+                  src="https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2019/12/twitter-logo.jpg"
+                />
+              </a>
+            </div>
+          </div> */}
+
           <div className="content p-8 pt-0 overflow-auto">{children}</div>
         </div>
       </div>

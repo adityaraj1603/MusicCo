@@ -6,21 +6,21 @@ const SongCard = ({ info, playSound }) => {
 
   return (
     <div
-      className="flex hover:bg-gray-400 hover:bg-opacity-20 p-2 rounded-sm xs:text-xs sm:text-xs md:text-sm lg:text-md"
+      className="flex hover:bg-gray-400 hover:bg-opacity-20 p-2 rounded-sm"
       onClick={() => {
         setCurrentSong(info);
       }}
     >
       {
         <div
-          className="w-100 h-100 bg-cover bg-center xs:text-xs sm:text-xs md:text-sm lg:text-md"
+          className="w-100 h-100 bg-cover bg-center"
           style={{
             backgroundImage: `url("${info.thumbnail}")`,
           }}
         ></div>
       }
       {
-        <div className="flex w-10 h-20 xs:text-xs sm:text-xs md:text-sm lg:text-md">
+        <div className="flex w-10 h-20">
           <div className="text-white flex justify-center  flex-col pl-4 w-5/6">
             <div className="cursor-pointer hover:underline">{info.name}</div>
             <div className="text-xs text-gray-400 cursor-pointer hover:underline">

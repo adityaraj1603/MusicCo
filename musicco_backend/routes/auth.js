@@ -58,6 +58,32 @@ router.post("/login", async (req, res) => {
   return res.status(200).json(userToReturn);
 });
 
+router.put(
+  "/updateprofile",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const { password, firstName, lastName, username } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUserData = {
+      password: hashedPassword,
+      firstName,
+      lastName,
+      username,
+    };
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    });
+
+    res.status(200).json({
+      success: true,
+    });
+  }
+);
+
 // router.get("/logout", (req, res) => {
 //   res.clearCookie("token", { path: "/login" });
 //   res.status(200).send("user logout");

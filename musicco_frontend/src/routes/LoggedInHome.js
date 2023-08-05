@@ -108,14 +108,14 @@ const Home = () => {
 
   return (
     <LoggedInContainer curActiveScreen="home">
-      <div classname="xs:text-xs sm:text-xs md:text-sm lg:text-md">
+      <div classname="text-xs sm:text-base md:text-lg ">
         <View titleText="Focus" cardsData={focusCardsData} />
         {/* <PlaylistView */}
 
         <div className="text-white text-xl pt-8 font-semibold">
           MusicCo Songs
         </div>
-        <div className="py-5 grid gap-5 grid-cols-5">
+        <div className="py-5 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
           {songData.map((item) => {
             return <Card2 info={item} playSound={() => {}} />;
           })}
@@ -124,7 +124,7 @@ const Home = () => {
         <div className="text-white text-xl pt-8 font-semibold">
           MusicCo Playlists
         </div>
-        <div className="py-5 grid gap-5 grid-cols-5">
+        <div className="py-5 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
           {playlistData.map((item) => {
             return (
               <Card
@@ -141,7 +141,7 @@ const Home = () => {
         <div className="text-white text-xl pt-8 font-semibold">
           My Playlists
         </div>
-        <div className="py-5 grid gap-5 grid-cols-5">
+        <div className="py-5 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
           {myPlaylists.map((item) => {
             return (
               <Card
@@ -154,8 +154,9 @@ const Home = () => {
             );
           })}
         </div>
-
-        <View titleText="Sound of India" cardsData={focusCardsData} />
+        <div className="py-5 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+          <View titleText="Sound of India" cardsData={focusCardsData} />
+        </div>
       </div>
     </LoggedInContainer>
   );
@@ -163,9 +164,9 @@ const Home = () => {
 
 const PlaylistView = ({ titleText, cardsData }) => {
   return (
-    <div className="text-white mt-8">
+    <div className="text-white mt-8  grid-gap-2 sm:grid-gap-3 md:grid-gap-5 space-x-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
       <div className="text-2xl font-semibold mb-5">{titleText}</div>
-      <div className="w-full flex justify-between space-x-4">
+      <div className="w-full flex justify-between">
         {
           // cardsData will be an array
           cardsData.map((item) => {
@@ -188,7 +189,7 @@ const View = ({ titleText, cardsData }) => {
   return (
     <div className="text-white mt-8">
       <div className="text-2xl font-semibold mb-5">{titleText}</div>
-      <div className="w-full flex justify-between space-x-4">
+      <div className="w-full flex justify-between grid-gap-2 sm:grid-gap-3 md:grid-gap-5 space-x-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
         {
           // cardsData will be an array
           cardsData.map((item) => {
@@ -214,15 +215,13 @@ const Card = ({ title, description, imgUrl, playlistId }) => {
         navigate("/playlist/" + playlistId);
       }}
     >
-      <div className="text-white mt-8 xs:text-xs sm:text-xs md:text-sm lg:text-md">
+      <div className="text-white mt-8 text-xs sm:text-base md:text-lg">
         {/* <div className="text-2xl font-semibold mb-5">{titleText}</div> */}
         <div className="w-full flex justify-between space-x-4">
           <img className="w-full rounded-md" src={imgUrl} alt="label" />
         </div>
         <div className="text-white font-semibold py-3">{title}</div>
-        <div className="text-gray-500 text-sm xs:text-xs sm:text-xs md:text-xs lg:text-md">
-          {description}
-        </div>
+        <div className="text-gray-500  ">{description}</div>
       </div>
     </div>
   );
@@ -236,13 +235,13 @@ const Card2 = ({ info }) => {
         setCurrentSong(info);
       }}
     >
-      <div className="text-white mt-8 xs:text-xs sm:text-xs md:text-sm lg:text-md">
+      <div className="text-white mt-8 xs:text-xs text-xs sm:text-base md:text-lg">
         {/* <div className="text-2xl font-semibold mb-5">{titleText}</div> */}
         <div className="w-full flex justify-between space-x-4">
           <img className="w-full rounded-md" src={info.thumbnail} alt="label" />
         </div>
         <div className="text-white font-semibold py-3">{info.name}</div>
-        <div className="text-gray-500 text-sm">
+        <div className="text-gray-500 ">
           {info.artist.firstName + " " + info.artist.lastName}
         </div>
       </div>
@@ -251,12 +250,12 @@ const Card2 = ({ info }) => {
 };
 const Card1 = ({ title, description, imgUrl }) => {
   return (
-    <div className="bg-black bg-opacity-40 w-1/5 p-4 rounded-lg xs:text-xs sm:text-xs md:text-sm lg:text-md">
+    <div className="bg-black bg-opacity-40 w-1/5 p-4 rounded-lg text-xs sm:text-base md:text-lg">
       <div className="pb-4 pt-2">
         <img className="w-full rounded-md" src={imgUrl} alt="label" />
       </div>
       <div className="text-white font-semibold py-3">{title}</div>
-      <div className="text-gray-500 text-sm">{description}</div>
+      <div className="text-gray-500 ">{description}</div>
     </div>
   );
 };

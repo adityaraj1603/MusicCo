@@ -147,7 +147,7 @@ const Home = () => {
         <div className="content p-8 pt-0 overflow-auto">
           <PlaylistView titleText="Focus" cardsData={focusCardsData} />
           <PlaylistView
-            titleText="Spotify Playlists"
+            titleText="MusicCo Playlists"
             cardsData={spotifyPlaylistsCardData}
           />
           <PlaylistView titleText="Sound of India" cardsData={focusCardsData} />

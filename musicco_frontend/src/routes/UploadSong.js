@@ -29,7 +29,7 @@ const UploadSong = () => {
 
   return (
     <LoggedInContainer curActiveScreen="uploadsong">
-      <div className="content p-8 pt-0 overflow-auto">
+      <div className="content p-8 pt-0 overflow-auto text-xs sm:text-base md:text-lg">
         <div className="text-2xl font-semibold mb-5 text-white mt-8">
           Upload Your Music
         </div>
